@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="termosense.css">
+    <title>Calculadora</title>
+</head>
+<body>
+
+    <img class="img_logo" src="logo_Termosense.png" alt="Logo Termosense">
+
+    <h1 class="h1_titulo">Calcule quanto sua empresa perde em medicamentos por ano</h1>
+
+    
+
+    <h4 class="h4_campo">Informe a quantidade de medicamentos termolabéis recebidos por ano:</h4>
+    <input type="text" id="id_med_ano" placeholder="Quantidade de Medicamentos">
+
+    <br> <br>
+
+   <h4 class="h4_campo"> Informe o valor gasto anual: </h4>
+    <input type="text" id="id_gasto" placeholder="Gasto anual">
+
+    <br><br>
+
+    <h4 class="h4_campo"> Informe a quantidade de remedios que são descartados por ano: </h4>
+    <input type="text" id="id_descarte" placeholder="Remedios Descartados">
+
+    <br><br>
+    
+    <button class="but_calc" onclick="calcular()">Calcular dados</button>
+
+    <div id="div_msg" class="div_resp"></div>
+
+    <br>
+
+
+    
+</body>
+</html>
+
+<script>
+
+    function calcular(){
+
+        var qtdano = Number(id_med_ano.value);
+        var valoranual = Number(id_gasto.value);
+        var descartes = Number(id_descarte.value);
+
+        var resultporc = (descartes / qtdano) * 100 ;
+        var totalperc = (descartes / qtdano)* valoranual ;
+        var resultano = (totalperc / valoranual) * 100 ; 
+
+        var termperc = (qtdano / 100 )* 75;
+        var termporc = (termperc / qtdano) *100; 
+        var dintermo = (valoranual / 100) * 75 ;
+        var dintotal = (dintermo / valoranual) * 100;
+        
+        
+
+        div_msg.innerHTML = "<br><br><h4>Quantidade de remedios termolábeis são: " + qtdano + " (100%)"
+                       + "<br>Valor gasto anualmente é de R$"+ valoranual + " (100%)"
+                       + "<br>Total de medicamentos descartados: " +descartes+ " (" +resultporc +"%)"
+                       + "<br>Total de dinheiro perdido R$" +totalperc + " (" +resultano +"%)</h4>"
+
+                       + "<br><br><h3>Resultado pela nossa prestação de serviço: </h3>"
+                       + "<h4>Porcentagem de Eficácia: 75%"
+                       + "<br><br>Comparação:"
+                       + "Quantidade de remedios termolábeis são: " + qtdano + " (100%)"
+                       + "<br>Medicamentos aproveitados com a Termosense: " + termperc + " ("+ termporc +"%)"
+                       + "<br>Total de dinheiro aproveitado: R$"+ dintermo + "("+ dintotal +"%)</h4>";
+
+    }
+
+</script>
